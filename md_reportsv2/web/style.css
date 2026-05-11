@@ -1,0 +1,793 @@
+.body{
+    font-family: "InterBold";
+    overflow: hidden;
+}
+p{
+    display: none;
+}
+.cont{
+    background:#1e1e1e;
+    height: 70vh;
+    width: 50vw;
+    display: none;
+    transform: translate(-50%, -50%);
+    margin-top: 50vh;
+    margin-left: 50vw;
+    border-radius: 12px;
+    border:1.5px solid #2a2a2a;
+    border-bottom: 4px solid #2a2a2a;
+    position: absolute;
+    
+}
+.upperPanel{
+    height: 50px;
+    width: 100%;
+}
+.upperBar{
+    width: 30%;
+    height: 5vh;
+    background: #2a2a2a;
+    clip-path: polygon(
+        10% 100%,
+        90% 100%,
+        100% 0%,
+        100% 0%,
+        0% 0%,
+        0% 0%
+    );
+    position: fixed;
+    
+    transform: translate(-50%, 0%);
+    margin-left: 50%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 2vh;
+    user-select: none;
+
+}
+.serverinfo{
+    width: 10vw;
+    height: 50px;
+    background-color: #1e1e1e;
+    display: flex;
+    justify-content: center;
+    border: 1px solid rgb(0, 132, 255);
+    color: rgb(0, 132, 255);
+    border-radius: 12px;
+    float: left;
+    margin-top: 5px;
+    margin-left: 5px;
+    align-items: center;
+    text-align: center;
+    user-select: none;
+    font-family: "InterBold";
+}
+.closeBtn {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 80, 80, 0.12);
+    border: 1px solid rgba(255, 80, 80, 0.25);
+    color: rgba(255, 120, 120, 0.9);
+    font-weight: 600;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    margin-top: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+}
+.closeBtn:hover {
+    color: rgba(255, 120, 120, 0.9);
+    background: rgba(255, 80, 80, 0.25);
+    border: 1px solid rgba(255, 80, 80, 0.25);
+}
+.closeBtn:active {
+    transform: scale(0.95);
+}
+
+
+.delBtn {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 80, 80, 0.12);
+    border: 1px solid rgba(255, 80, 80, 0.25);
+    color: rgba(255, 120, 120, 0.9);
+    font-weight: 600;
+    border-radius: 12px;
+    justify-content: center;
+    align-items: center;
+    float: left;
+    margin-top: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+    margin-left: 10px;
+    display: none;
+}
+.delBtn:hover {
+    color: rgba(255, 120, 120, 0.9);
+    background: rgba(255, 80, 80, 0.25);
+    border: 1px solid rgba(255, 80, 80, 0.25);
+}
+.delBtn:active {
+    transform: scale(0.95);
+}
+
+
+.navBar{
+    width: 30%;
+    height: 5vh;
+    background: #2a2a2a;
+    clip-path: polygon(
+        10% 0%,
+        90% 0%,
+        100% 100%,
+        100% 100%,
+        0% 100%,
+        0% 100%
+    );
+    position: fixed;
+    transform: translate(-50%, 0%);
+    margin-bottom: 0vh;
+    bottom: 0;
+    margin-left: 50%;
+    align-items: center;
+    display: flex;
+    user-select: none;
+    justify-content: center;
+}
+.navItem{
+    width: 2.2vw;
+    height: 2.2vw;
+    border-radius: 12px;
+    margin-left: 3px;
+    background-color: #1e1e1e;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    border: 1px solid rgb(0, 132, 255);
+    color: rgb(0, 132, 255);
+    transition: all 0.8s ease;
+    cursor: pointer;
+    user-select: none;
+}
+.disabledBtn{
+    color: rgb(77, 77, 77);
+    border: 1px solid rgb(77, 77, 77);
+    cursor: not-allowed;
+}
+.disabledBtn:hover{
+    color: rgb(77, 77, 77);
+    border: 1px solid rgb(77, 77, 77);
+    cursor: not-allowed;
+}
+.navItem:hover{
+    background-color: rgb(0, 132, 255);
+    color: #1e1e1e;
+}
+.activeNav{
+    background-color: rgb(0, 132, 255);
+    color: #1e1e1e;
+}
+.cell{
+    width: 80%;
+    height: 80%;
+    margin-top: 6vh;
+    margin-left: 10%;
+    z-index: 1;
+}
+
+.upperPanel, .navBar {
+    position: fixed;
+    z-index: 10;
+}
+.cellText{
+    font-size: 1.5vh; 
+    color: white;
+    margin-top: 2vh;
+    user-select: none;
+    margin-left: 20%;
+}
+.cellCreate{
+    transform: translate(-50%, 0%);
+    margin-left: 50%;
+    font-size: 1.5vh;
+    background-color: #1e1e1e;
+    border: 1px solid rgb(0, 132, 255);
+    color: rgb(0, 132, 255);
+    border-radius: 12px;
+    width: 20%;
+    height: 4vh;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    transition: all 0.6s ease;
+    user-select: none;
+    cursor: pointer;
+
+}
+.cellCreate:hover{
+    background-color: rgb(0, 132, 255);
+    border: 1px solid rgb(0, 132, 255);
+    color: #1e1e1e;
+}
+.repList {
+    height: 30%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.repListCell{
+    width: 60%;
+    height: 7vh;
+    background-color: #2a2a2a;
+    border-radius: 6px;
+    margin-left: 20%;
+    cursor: pointer;
+    border-left:  6px solid rgb(0, 132, 255);
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    color: white;
+
+}
+.repListCell:hover{
+    background-color: rgb(0, 132, 255);
+    transition: all 0.3s ease-in-out;
+    border-left: 6px solid #2a2a2a;
+    color: #2a2a2a;
+
+
+}
+.repListCell:hover .repListCellTick{
+    background-color: rgb(0, 132, 255);
+    color: #1e1e1e;
+    border: 1px solid #1e1e1e;
+
+}
+
+.repListCellCont{
+    display: block;
+    float: left;
+    width: 100%;
+}
+.repListCellContCell{
+    min-height: 50%;
+    width: 90%;
+    margin-left: 5%;
+    display: flex;
+    align-items: center;
+    user-select: none;
+    word-break: break-word;
+    white-space: normal;
+    
+}
+
+
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 132, 255, 0.6);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(0, 132, 255);
+}
+
+.repListCellTick{
+    aspect-ratio: 1 / 1;
+    height: 80%;
+    background-color: #1e1e1e;
+    border: 1px solid rgb(0, 132, 255);
+    color: rgb(0, 132, 255);
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 12px;
+    align-items: center;
+    font-size: 3vh;
+    top: 0%;
+    margin-left: 3%;
+    position: relative;
+}
+
+.repListCellTick i{
+    transform: rotate(-45deg);
+
+}
+
+
+
+
+
+.cellCreate2{
+    transform: translate(-50%, 0%);
+    margin-left: 50%;
+    font-size: 1.5vh;
+    background-color: #1e1e1e;
+    border: 1px solid #1e1e1e;
+    color: rgb(0, 132, 255);
+    border-radius: 12px;
+    width: 20%;
+    height: 4vh;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    user-select: none;
+
+}
+.newRepText{
+    color: white;
+    font-size: 2vh;
+    margin-left: 20%;
+
+}
+.newRepInp{
+    width: 60%;
+    margin-left: 20%;
+    height: 3.5vh;
+    background-color: #2a2a2a;
+    border-radius: 12px;
+    outline: none;
+    border: none;
+    font-size: 2vh;
+    color: white;
+    transition: all 0.7s ease-in-out;
+    border: 1px solid #2a2a2a;
+}
+.newRepInp:focus{
+    color: rgb(0, 132, 255);
+    border: 1px solid rgb(0, 132, 255);
+}
+.newRepInp2{
+    width: 60%;
+    margin-left: 20%;
+    height: 20vh;
+    background-color: #2a2a2a;
+    border-radius: 12px;
+    outline: none;
+    border: none;
+    font-size: 2vh;
+    color: white;
+    transition: all 0.7s ease-in-out;
+    border: 1px solid #2a2a2a;
+    resize: none;
+}
+.newRepInp2:focus{
+    color: rgb(0, 132, 255);
+    border: 1px solid rgb(0, 132, 255);
+}
+.newRepContBtn{
+    width: 60%;
+    margin-left: 20%;
+    height: 4vh;
+    display: flex;
+}
+.newRepBtn{
+    background-color: #2a2a2a;
+    border-radius: 12px;
+    width: 33%;
+    height: 100%;
+    color: white;
+    user-select: none;
+    font-size: 2.5vh;
+    margin-left: 0.5%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border: 1px solid rgb(0, 132, 255);
+    cursor: pointer;
+}
+.newRepBtn i{
+    color: rgb(0, 132, 255)
+}
+
+
+.activ{
+    background-color: rgb(0, 132, 255);;
+    border: 1px solid #2a2a2a
+}
+.activ i{
+    color: white
+}
+.chatUpper{
+    display: flex;
+    width: 80%;
+    height: 3vh;
+}
+.chatUpperCont{
+    background-color: #2a2a2a;
+    border: 1px solid rgb(0, 132, 255);
+    border-radius: 12px;
+    width: 80%;
+    height: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+
+
+
+.repListCell2{
+    width: 100%;
+    height: 7vh;
+    background-color: #2a2a2a;
+    border-radius: 6px;
+    margin-left: 0%;
+    cursor: pointer;
+    border-left:  6px solid rgb(0, 132, 255);
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    color: white;
+
+}
+
+.repListCellCont2{
+    display: block;
+    float: left;
+    width: 100%
+}
+.repListCellContCell2{
+    height: 50%;
+    width: 90%;
+    margin-left: 5%;
+    display: flex;
+    align-items: center;
+    user-select: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.repListCellTick2{
+    aspect-ratio: 1 / 1;
+    height: 80%;
+    background-color: #1e1e1e;
+    border: 1px solid rgb(0, 132, 255);
+    color: rgb(0, 132, 255);
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 12px;
+    align-items: center;
+    font-size: 3vh;
+    top: 0%;
+    margin-left: 3%;
+    position: relative;
+}
+
+.repListCellTick2 i{
+    transform: rotate(-45deg);
+
+}
+.chatCont{
+    width: 90%;
+    height: 70%;
+    background-color: #2a2a2a;
+    border-radius: 12px;
+    margin-left: 5%;
+    margin-top: 5%;
+}
+.chatArea{
+    width: 80%;
+    margin-left: 10%;
+    height: 88%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.chatAreaInp{
+    width: 80%;
+    margin-left: 10%;
+    height: 12%;
+    display: flex;
+}
+.chatSend{
+    height: 3.5vh;
+    aspect-ratio: 1/1;
+    border-radius: 12px;
+    margin-left: 3px;
+    background-color: #1e1e1e;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    border: 1px solid rgb(0, 132, 255);
+    color: rgb(0, 132, 255);
+    transition: all 0.8s ease;
+    cursor: pointer;
+    user-select: none;
+}
+.chatSend:hover{
+    background-color: rgb(0, 132, 255);
+    color: #1e1e1e;
+}
+.chatCell{
+    background-color: #1e1e1e;
+    height: auto;
+    width: 90%;
+    color: white;
+    display: flex;
+    justify-items: center;
+    text-align: center;
+    align-items: flex-start;
+    border-radius: 6px;
+    border-left: 6px solid rgb(0, 132, 255);
+    margin-top: 30px;
+}
+.chatCellI{
+    aspect-ratio: 1 / 1;
+    height: 3.5vh;
+    background-color: #1e1e1e;
+    border: 1px solid rgb(0, 132, 255);
+    color: rgb(0, 132, 255);
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 12px;
+    align-items: center;
+    font-size: 3vh;
+    top: 0%;
+    margin-left: 3%;
+    position: relative;
+    margin-top: 15px;
+
+}
+.chatCellLeft {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    max-width: 80%;
+}
+.chatCellLeftDiv{
+    color: white;
+    font-size: 1.5vh;
+    height: 50%;
+    text-align: left;
+    margin-top: 5px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+.bluechatCellLeftDiv{
+    color: rgb(0, 132, 255);
+    margin-top: 10px;
+    user-select: none;
+}
+
+
+.noreport{
+    color: rgb(0, 132, 255);
+    margin-left: 15vh;
+    user-select: none;
+    margin-top: 1vh;
+}
+
+
+
+
+.adminField{
+    height: 80%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+.admincont{
+    width: 10vw;
+    height: 30vh;
+    background:#1e1e1e;
+    border-radius: 12px;
+    position: fixed;
+    left: 51vw;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.adminbtns{
+    width: 90%;
+    margin-top: 15px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+@font-face {
+    font-family: "InterBold";
+    src: url("assets/Inter_18pt-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translate(-50%, 100%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+    to {
+        transform: translate(-50%, 100%);
+        opacity: 0;
+    }
+}
+
+.openAnim {
+    animation: slideIn 0.25s ease-out forwards;
+}
+
+.closeAnim {
+    animation: slideOut 0.2s ease-in forwards;
+}
+
+
+.dutyBtn {
+    width: 50px;
+    height: 50px;
+    background: #2a2a2a;
+    border: 1px solid rgb(0, 132, 255);
+    color: rgb(0, 132, 255);
+    font-weight: 600;
+    border-radius: 12px;
+    justify-content: center;
+    align-items: center;
+    float: left;
+    margin-top: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+    margin-left: 10px;
+    display: none;
+
+}
+.dutyBtn:hover {
+    color: #2a2a2a;
+    background: rgb(0, 132, 255);
+    border: 1px solid rgb(0, 132, 255);
+}
+.dutyBtn:active {
+    transform: scale(0.95);
+}
+
+.managementCont{
+    width: 60%;
+    margin-left: 20%;
+    height: 20%;
+    color: white;
+    font-size: 2vh;
+    border-radius: 12px;
+    background-color: #2a2a2a;
+}
+
+.managerBlueText{
+    color: rgb(0, 132, 255);
+    margin-left: 1vw;
+}
+
+.managerWipeReports{
+    color: rgba(255, 120, 120, 0.9);
+    background: rgba(255, 80, 80, 0.12);
+    border: 1px solid rgba(255, 80, 80, 0.25);
+    width: 80%;
+    height: 3vh;
+    font-size: 2vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+    font-weight: bold;
+    user-select: none;
+    border-radius: 12px;
+    margin-left: 10%;
+}
+.managerWipeReports:hover {
+    color: rgba(255, 120, 120, 0.9);
+    background: rgba(255, 80, 80, 0.25);
+    border: 1px solid rgba(255, 80, 80, 0.25);
+}
+.managerWipeReports:active {
+    transform: scale(0.95);
+}
+
+.managerWipeBar{
+    color: rgba(255, 120, 120, 0.9);
+    background: rgba(255, 80, 80, 0.25);
+    border: 1px solid rgba(255, 80, 80, 0.25);
+    height: 1vh;
+    margin-left: 10%;
+    margin-top: 5px;
+    width: 80%;
+    display: none;
+}
+.managerWipeText{
+    color: rgb(204, 204, 204);
+    font-size: 1vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+.repListGraph {
+    height: 30%;
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border: 1px solid #2a2a2a;
+    padding: 10px;
+    border-radius: 12px;
+    justify-content: center;
+}
+
+.graphBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    min-width: 60px;
+    height: 100%;
+    flex-shrink: 0;
+}
+.graph {
+    width: 50px;
+    background-color: rgb(0, 132, 255);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.graphAdmin {
+    color: white;
+    margin-top: 5px;
+    font-size: 12px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 60px;
+}

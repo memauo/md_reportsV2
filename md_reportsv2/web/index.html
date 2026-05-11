@@ -1,0 +1,121 @@
+<html>
+    <head></head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <body class="body">
+        <p>© 2026 MD DEV. All rights reserved.</p>
+        <div class="cont" id="cont">
+            <div class="upperPanel">
+                <div class="serverinfo" id="servername"></div>
+                <div class="delBtn" id="delbtnuser" onclick="playClick(); deleteopened()"><i class="fa-solid fa-trash-can"></i></div>
+                <div class="dutyBtn" onclick="playClick(); duty()" id="dutyBtn"><i class="fa-solid fa-briefcase"></i></div>
+                <div class="upperBar" id="transReportMenu"></div>
+                <div class="closeBtn" onclick="closeWeb()">✕</div>
+            </div>
+            <div class="navBar">
+                <a class="navItem disabledBtn" onclick="setActive(this);playClick();showPage('chat'); openPlayerReport(-1); checkOpened()"><i class="fa-solid fa-ticket"></i></a>
+                <a class="navItem activeNav" onclick="setActive(this);playClick(); showPage('home'); updateHome()"><i class="fa-solid fa-house"></i></a>
+                <a class="navItem" onclick="playClick();setActive(this);showPage('new')"><i class="fa-brands fa-plus"></i></a>
+                <a class="navItem" id="adminSection" onclick="setActive(this); playClick(); updateAdmin();showPage('admin')" style="display: none;"><i class="fa-brands fa-black-tie"></i></a>
+                <a class="navItem" id="managerSection" onclick="setActive(this); playClick(); showPage('management'); updateMngmnt()" style="display: none;"><i class="fa-solid fa-crown"></i></a>
+            </div>
+            <div class="cell" id="home">
+                <div style="z-index: 10; position: relative;">
+                    <div class="cellCreate" onclick="playClick(); showPage('new');newShow(2)" id="transCreateReport"></div>
+                    <div class="cellText" id="transActiveReports"></div>
+                    <div class="repList" style="height: 15%" id="activeReps">
+                    </div>
+                    <div class="cellText" id="transWaitingReports"></div>
+                    <div class="repList" style="height: 30%" id="waitingReps">
+                    </div>
+                    <div class="cellText" id="transHistory"></div>
+                    <div class="repList" style="height: 30%" id="historyReps">
+                    </div>
+                </div>
+            </div>
+            <div class="cell" id="new" style="display: none;">
+                <div>
+                    <div class="cellCreate2" id="transCreateReport2"></div>
+                    <div class="newRepContBtn">
+                        <div class="newRepBtn active" onclick="select('report1');playClick()" id="report1"></div>
+                        <div class="newRepBtn" onclick="select('report2');playClick()" id="report2"></div>
+                        <div class="newRepBtn" onclick="select('report3');playClick()" id="report3"></div>
+                    </div>
+                    <div class="newRepText" style="margin-top: 2vh;" id="transHeader"></div>
+                    <input class="newRepInp" type="text" id="createHead"  maxlength="50">
+                    <div class="newRepText" style="margin-top: 2vh;" id="transInfo"></div>
+                    <textarea class="newRepInp2" id="createInfo"></textarea>
+                    <div class="cellCreate" style="margin-top: 3vh;" onclick="playClick();createRep()" id="transCreateReport3"></div>
+                </div>
+            </div>
+
+            <div class="cell" id="chat" style="display: none;">
+                <div id="ch" style="display: none;">
+                    <div class="repListCell2">
+                        
+                        <div class="repListCellTick2">
+                            <i class="fa-solid fa-ticket"></i>
+                        </div>
+                        <div class="repListCellCont2">
+                            <div class="repListCellContCell2" id="chatHeader"></div>
+                            <div class="repListCellContCell2" id="chatDate"></div>
+                        </div>
+                    </div>
+                    <div class="repListCell2">
+                        <div class="repListCellCont2">
+                            <div class="repListCellContCell2" id="chatInfo"></div>
+                        </div>
+                    </div>
+                    <div class="chatCont">
+                        <div class="chatArea" id="chatArea">
+                        </div>
+                        <div class="chatAreaInp" id="hideinpt">
+                            <input type="text" class="newRepInp" style="border: 2px solid #1e1e1e;" id="chatInput">
+                            <div class="chatSend" onclick="sendChatMsg()"><i class="fa-solid fa-paper-plane"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="chc" style="display: block;">
+                    <div id="transOpenReport">
+                        ...
+                    </div>
+                </div>
+            </div>
+            <div class="cell" id="admin" style="display:none">
+                <div class="cellText" id="transActiveReports2"></div>
+                <div class="repList" style="height: 30%" id="adminActiveReps">
+                </div>
+                <div class="cellText" id="transWaitingReports2"></div>
+                <div class="repList" style="height: 65%" id="adminWaitingReps">
+                </div>
+            </div>
+            <div class="admincont" id="adminview">
+                <div class="cellCreate adminbtns" onclick="playClick(); startsolving()" id="transStartSolving"></div>
+                <div class="cellCreate adminbtns" onclick="playClick(); goback()" id="transGoBack"></div>
+                <div class="cellCreate adminbtns" onclick="playClick(); teleport()" id="transGoTo"></div>
+                <div class="cellCreate adminbtns" onclick="playClick(); transcript()" id="transTranscriptAT"></div>
+                <div class="cellCreate adminbtns" onclick="playClick(); markasdone()" id="transMarkAsDone"></div>
+            </div>
+            <div id="management" class="cell" style="display: none;">
+                <div class="managementCont">
+                    <div><a class="managerBlueText" id="transTotalReports"> </a><a id="total"></a></div>
+                    <div><a class="managerBlueText" id="SolvedReports"> </a><a id="solved"></a></div>
+                    <div class="managerWipeReports" id="wipebtn"></div>
+                    <div class="managerWipeBar" id="managerdelbar"></div>
+                    <div class="managerWipeText" id="Irreversible"></div>
+                </div>
+                <div class="cellText" id="transClosedReports"></div>
+                <div class="repList" style="height: 30%" id="mngClosed" style="overflow-y: scroll"></div>
+                <div class="cellText" id="transAdminActivity"></div>
+                <div class="repListGraph" id="activityadmin">
+                    <div class="graphBox">
+                        <div class="graph">7</div>
+                        <div class="graphAdmin">Admin1</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
